@@ -1,0 +1,16 @@
+name: Keep Hugging Face Space Alive
+
+on:
+  schedule:
+    # 40分ごとに実行
+    - cron: '*/40 * * * *'
+  workflow_dispatch: # 手動で「今すぐ実行」もできるようにする
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a ping to HF Space
+        run: |
+          # curl コマンドを使って、SpaceのURLにアクセス（叩く）します
+          curl -I https://huggingface.co/spaces/SHU-KOSEN/chatbot
